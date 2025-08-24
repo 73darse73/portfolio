@@ -39,26 +39,30 @@ test(frontend): add home page tests
 
 ## 3. マージ方式
 
-- **Squash & Merge** を原則とする
+- **ブランチ分けして作業、PRなしで直接マージ** を原則とする
+- 機能ブランチで作業 → mainブランチに直接マージ
 - 履歴を整理してからmainブランチに統合
 
-## 4. PRルール
+## 4. ブランチベースワークフロー（PRなし）
 
-### 必須項目
-- [ ] PRテンプレートの記入
-  - 目的
-  - 変更点
-  - 確認手順
-  - 影響範囲
-  - リリース注意点
+### 基本フロー
+1. **ブランチ作成**: `git switch -c feat/feature-name`
+2. **実装・テスト**: 機能開発とテスト
+3. **品質チェック**: `pnpm run check` で事前確認
+4. **mainブランチにマージ**: `git merge feat/feature-name`
+5. **プッシュ**: `git push origin main`
+6. **ブランチ削除**: `git branch -d feat/feature-name`
 
-### UI変更時の追加要件
-- [ ] スクリーンショット or 動画の添付
-- [ ] レスポンシブ対応の確認
+### ブランチ命名規則
+- `feat/*`: 新機能追加
+- `fix/*`: バグ修正
+- `chore/*`: 設定・依存更新
+- `hotfix/*`: 緊急修正
 
-### 基本方針
-- 小さなPRを高頻度でマージ
-- 1つのPRで1つの機能・修正に集中
+### 品質担保
+- **Husky pre-push** で `pnpm run check` を強制実行
+- マージ前に必ずlint・typecheck・buildを実行
+- 小さな変更でもブランチ分けして作業
 
 ## 5. CI / Lint / Build
 
@@ -110,17 +114,17 @@ pnpm run typecheck
 ## 9. ホットフィックス
 
 ### 緊急修正フロー
-1. `hotfix/*` ブランチ作成
+1. `hotfix/*` ブランチ作成（必要に応じて）
 2. 最小差分で修正
-3. Squash & Merge
+3. 直接mainブランチにpush
 4. 手動デプロイ
 5. タグ `vX.Y.(Z+1)` 付与
 
 ## 10. 推奨設定
 
 ### GitHub設定
-- **Branch protection** → PR必須 + CI必須
-- レビュー承認後のマージ許可
+- **Branch protection** → 無効化（直接push許可）
+- CIチェックは維持（品質担保のため）
 
 ### 開発環境
 - **Prettier + ESLint** でコード整形 & 品質担保

@@ -70,13 +70,20 @@ root/
 
 ## 🔄 開発フロー
 
+### 通常開発（ブランチベース、PRなし）
 1. **ブランチ作成**: `git switch -c feat/feature-name`
 2. **実装・テスト**: 機能開発とテスト
 3. **品質チェック**: `pnpm run check`
-4. **PR作成**: スクリーンショット添付・テンプレート記入
-5. **CI通過確認**: Lint・Build・TypeCheck
-6. **マージ**: Squash & Merge
-7. **本番デプロイ**: 手動昇格
+4. **mainブランチにマージ**: `git merge feat/feature-name`
+5. **プッシュ・デプロイ**: `git push origin main`
+6. **ブランチ削除**: `git branch -d feat/feature-name`
+
+### 緊急修正（ホットフィックス）
+1. **ホットフィックスブランチ作成**: `git switch -c hotfix/critical-issue`
+2. **最小修正**: 緊急対応
+3. **品質チェック**: `pnpm run check`
+4. **マージ・プッシュ・デプロイ**: 即座に反映
+5. **ブランチ削除**: `git branch -d hotfix/critical-issue`
 
 ## 📝 ライセンス
 
