@@ -25,7 +25,7 @@ pnpm dev
 ### 通常開発フロー
 ```bash
 # 1. ブランチ作成
-git switch -c feat/home_fv_add-motion
+git switch -c feat/feature-name
 
 # 2. 実装・テスト
 # ... 実装作業 ...
@@ -33,29 +33,35 @@ git switch -c feat/home_fv_add-motion
 # 3. 品質チェック
 pnpm run check
 
-# 4. PR作成
-# - スクリーンショット添付
-# - テンプレート記入
+# 4. mainブランチにマージ
+git switch main
+git merge feat/feature-name
 
-# 5. CI通過確認
-# - Lint・Build・TypeCheck
+# 5. プッシュ・デプロイ
+git push origin main
 
-# 6. Preview確認
-# - OKなら Squash & Merge
-
-# 7. 本番昇格
-# - 手動デプロイ
-# - 必要に応じてタグ付与
+# 6. ブランチ削除
+git branch -d feat/feature-name
 ```
 
 ### 緊急修正フロー
 ```bash
-# 1. ホットフィックスブランチ
+# 1. ホットフィックスブランチ作成
 git switch -c hotfix/critical-issue
 
 # 2. 最小修正
-# 3. 即座にマージ・デプロイ
-# 4. タグ付与
+# 3. 品質チェック
+pnpm run check
+
+# 4. mainブランチにマージ・プッシュ
+git switch main
+git merge hotfix/critical-issue
+git push origin main
+
+# 5. ブランチ削除
+git branch -d hotfix/critical-issue
+
+# 6. タグ付与
 ```
 
 ## 開発コマンド
