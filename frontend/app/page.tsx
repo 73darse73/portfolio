@@ -49,28 +49,31 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* ヒーローセクション */}
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 relative overflow-hidden">
-        {/* 背景の泡アニメーション */}
+      {/* メインコンテンツ */}
+      <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 relative overflow-hidden">
+        {/* まん丸の泡 */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full border-2 border-blue-200/40 animate-bubble-float"
-              style={{
-                width: `${20 + Math.random() * 40}px`,
-                height: `${20 + Math.random() * 40}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                background: `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(59,130,246,0.15))`,
-                boxShadow: `inset 0 2px 4px rgba(255,255,255,0.4), 0 2px 8px rgba(59,130,246,0.3)`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 2}s`
-              }}
-            />
-          ))}
+          {[...Array(30)].map((_, i) => {
+            const size = 20 + Math.random() * 50;
+            return (
+              <div
+                key={i}
+                className="absolute rounded-full border-2 border-blue-200/40 animate-bubble-float"
+                style={{
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  background: `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(59,130,246,0.15))`,
+                  boxShadow: `inset 0 2px 4px rgba(255,255,255,0.4), 0 2px 8px rgba(59,130,246,0.3)`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${3 + Math.random() * 2}s`
+                }}
+              />
+            );
+          })}
         </div>
-
+        
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <div className="mb-16">
             <div className="inline-block px-12 py-6 bg-white/90 text-blue-800 font-bold mb-12 rounded-full border border-blue-300 shadow-lg backdrop-blur-sm">
@@ -81,6 +84,7 @@ export default function Home() {
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">Kodama</span>
               <br />
               <span className="bg-gradient-to-r from-cyan-500 via-teal-500 to-blue-500 bg-clip-text text-transparent">Portfolio</span>
+              <br />
             </h1>
             
             <p className="text-2xl text-slate-600 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
@@ -104,12 +108,12 @@ export default function Home() {
             
             {/* CTA ボタン */}
             <div className="flex gap-8 justify-center">
-              <Button size="lg" className="px-16 py-6 text-xl bg-blue-600 hover:bg-blue-700">
+              <button className="px-16 py-6 text-xl bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105">
                 📁 プロジェクトを見る
-              </Button>
-              <Button variant="outline" size="lg" className="px-16 py-6 text-xl border-2 border-blue-600 text-blue-700 hover:bg-blue-50">
+              </button>
+              <button className="px-16 py-6 text-xl border-2 border-blue-600 text-blue-700 hover:bg-blue-50 font-bold rounded-full transition-all duration-300 hover:scale-105">
                 💬 お問い合わせ
-              </Button>
+              </button>
             </div>
           </div>
         </div>
