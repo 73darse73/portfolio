@@ -88,14 +88,13 @@ export default function Home() {
             </h1>
             
             <p className="text-2xl text-slate-600 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-              フルスタック開発者として<br />
-              技術とデザインの美しい調和を追求し<br />
-              ユーザー体験を革新するプロダクトを創造します
+              将来のフルスタック開発者として、<br />
+              様々な技術を学び、アウトプットしていきます。
             </p>
             
             {/* 技術スタック表示 */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {['Next.js 14', 'TypeScript', 'Tailwind CSS', 'NestJS', 'Prisma', 'PostgreSQL'].map((tech, index) => (
+              {['Next.js', 'TypeScript', 'Tailwind CSS', 'NestJS', 'PostgreSQL', 'Docker', 'A11y',].map((tech, index) => (
                 <div 
                   key={tech}
                   className="px-6 py-3 bg-white/80 text-blue-800 font-medium rounded-full border border-blue-200 shadow-md hover:scale-105 transition-transform duration-300"
