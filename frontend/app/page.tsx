@@ -6,6 +6,13 @@ import Layout from '@/components/layout/Layout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
+// 型拡張
+declare global {
+  interface Window {
+    webkitAudioContext: typeof AudioContext;
+  }
+}
+
 type Bubble = {
   id: number
   size: number
@@ -23,7 +30,7 @@ type Burst = {
   x: number   // scene内のpx
   y: number   // scene内のpx
   parts: {
-    dx: number; dy: number; rot: number; size: number; dur: number;
+    dx: string; dy: string; rot: string; size: string; dur: number;
   }[]
 }
 
@@ -31,7 +38,7 @@ function usePopAudio() {
   const ctxRef = useRef<AudioContext | null>(null)
   useEffect(() => () => { ctxRef.current?.close() }, [])
   return useCallback(() => {
-    const AC: any = (window as any).AudioContext || (window as any).webkitAudioContext
+    const AC = window.AudioContext || window.webkitAudioContext
     if (!AC) return
     if (!ctxRef.current) ctxRef.current = new AC()
     const ctx = ctxRef.current!
