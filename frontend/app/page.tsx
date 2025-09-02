@@ -1,9 +1,17 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
+import Link from 'next/link'
 import Layout from '@/components/layout/Layout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+
+// 型拡張
+declare global {
+  interface Window {
+    webkitAudioContext: typeof AudioContext;
+  }
+}
 
 type Bubble = {
   id: number
@@ -22,7 +30,7 @@ type Burst = {
   x: number   // scene内のpx
   y: number   // scene内のpx
   parts: {
-    dx: number; dy: number; rot: number; size: number; dur: number;
+    dx: string; dy: string; rot: string; size: string; dur: number;
   }[]
 }
 
@@ -30,7 +38,7 @@ function usePopAudio() {
   const ctxRef = useRef<AudioContext | null>(null)
   useEffect(() => () => { ctxRef.current?.close() }, [])
   return useCallback(() => {
-    const AC: any = (window as any).AudioContext || (window as any).webkitAudioContext
+    const AC = window.AudioContext || window.webkitAudioContext
     if (!AC) return
     if (!ctxRef.current) ctxRef.current = new AC()
     const ctx = ctxRef.current!
@@ -229,12 +237,12 @@ export default function Home() {
             
             {/* CTA ボタン */}
             <div className="flex gap-8 justify-center">
-              <button className="px-16 py-6 text-xl bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105">
+              <Link href="/projects" className="px-16 py-6 text-xl bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105">
                 📁 プロジェクトを見る
-              </button>
-              <button className="px-16 py-6 text-xl border-2 border-blue-600 text-blue-700 hover:bg-blue-50 font-bold rounded-full transition-all duration-300 hover:scale-105">
+              </Link>
+              <Link href="/contact" className="px-16 py-6 text-xl border-2 border-blue-600 text-blue-700 hover:bg-blue-50 font-bold rounded-full transition-all duration-300 hover:scale-105">
                 💬 お問い合わせ
-              </button>
+              </Link>
             </div>
           </div>
         </div>
