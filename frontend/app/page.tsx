@@ -254,10 +254,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              技術への情熱と創造性を武器に、ユーザー中心のデザインと堅牢なアーキテクチャを両立させた
-              プロダクト開発を得意としています。
-            </p>
+            <p className="text-xl text-gray-600 mx-auto">常に新しい領域に挑戦し、自分の武器に変えていくことを得意としています。<br/>社内で知見がなかったアクセシビリティや、Nuxt.js・Tailwind CSSの導入を自らリード。<br/>日々の学習をアウトプットし、チームや社会に還元することを大切にしています。</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -276,18 +273,12 @@ export default function Home() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-3">経歴</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  5年以上の開発経験を持つフルスタックエンジニア。スタートアップから大企業まで、
-                  様々な規模のプロジェクトに携わり、スケーラブルなアーキテクチャの設計と
-                  ユーザー体験の向上に注力しています。
+                <p className="text-gray-600 leading-relaxed">フロントエンドを中心に、大手ECや企業サイトの改善・運用に携わってきました。
                 </p>
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-3">専門分野</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  フロントエンド開発、バックエンドAPI設計、データベース設計、
-                  クラウドインフラ構築、DevOps、チームリーダーシップ
-                </p>
+                <p className="text-gray-600 leading-relaxed">得意分野はWebフロント実装とアクセシビリティ。最近はバックエンドやAI活用にも挑戦しています。</p>
               </div>
             </div>
           </div>
